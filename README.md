@@ -1,4 +1,4 @@
-# 🎙️ openclaw-voice-livestream
+# 🎙️ ClawCast
 
 Give your OpenClaw agent a real-time voice on livestreams, podcasts, and video calls.
 
@@ -14,8 +14,8 @@ Works with any streaming platform: **Restream, OBS, StreamYard, Google Meet, Zoo
 
 ```bash
 # 1. Clone
-git clone https://github.com/sene1337/voice-livestream.git
-cd voice-livestream
+git clone https://github.com/sene1337/clawcast.git
+cd clawcast
 
 # 2. Set your API key
 export ANTHROPIC_API_KEY="sk-ant-..."
@@ -65,7 +65,7 @@ Key ones:
 - [ ] Google Meet auto-join
 - [ ] OBS scene control
 
-PRs welcome. This was hacked together in a live stream session — make it better.
+PRs welcome. ClawCast was hacked together in a live stream session — make it better.
 
 ## License
 MIT

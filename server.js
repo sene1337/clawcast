@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * OpenClaw Voice Livestream Proxy
+ * ClawCast — Voice Livestream Proxy for OpenClaw
  * 
  * Bridges Vapi.ai voice I/O with any OpenAI-compatible LLM backend.
  * Vapi handles: STT (speech-to-text) + TTS (text-to-speech) + WebRTC
@@ -253,7 +253,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  log('info', `🎙️ Voice Livestream Proxy running on port ${PORT}`);
+  log('info', `🎙️ ClawCast running on port ${PORT}`);
   log('info', `   LLM: ${LLM_PROVIDER} / ${LLM_MODEL}`);
   log('info', `   Webhook: http://localhost:${PORT}/webhook`);
   log('info', `   Health: http://localhost:${PORT}/health`);

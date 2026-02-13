@@ -1,4 +1,4 @@
-# Voice Livestream Skill
+# ClawCast
 
 Give your OpenClaw agent a real-time voice on livestreams, podcasts, and video calls.
 

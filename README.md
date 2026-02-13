@@ -1,8 +1,11 @@
 # 🎙️ ClawCast
 
-Give your OpenClaw agent a real-time voice on livestreams, podcasts, and video calls.
+> ⚠️ **Status: Experimental / Party Trick**
+> This currently only gets your OpenClaw agent to speak on streams and calls (one-way voice). Two-way real-time conversation is not yet working — the audio routing required on macOS (multiple virtual audio devices, browser permission juggling) is fragile and full of foot guns. We're shelving this until purpose-built solutions like ClawdTalk or NVIDIA PersonaPlex mature. Use it for the novelty factor, not production.
 
-**Human speaks → Vapi transcribes → your LLM responds → Vapi speaks it back. ~500ms latency.**
+Give your OpenClaw agent a voice on livestreams, podcasts, and video calls.
+
+**Human speaks → Vapi transcribes → your LLM responds → Vapi speaks it back. ~500ms latency (theoretical).**
 
 ## How It Works
 

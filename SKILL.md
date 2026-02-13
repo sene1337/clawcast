@@ -63,7 +63,38 @@ Click "Talk to Assistant" in the Vapi dashboard. Your voice → Vapi → this se
 
 ## Streaming Platform Setup
 
-### Restream / StreamYard
+### macOS Dual Audio Routing (Two-Way Voice)
+
+Two-way voice requires **two virtual audio devices** so the AI can both speak into and hear from the call:
+
+1. Install both BlackHole variants:
+   ```bash
+   brew install --cask blackhole-2ch    # AI voice → Call mic
+   brew install --cask blackhole-16ch   # Call audio → AI mic (needs reboot)
+   ```
+2. **Reboot** after installing BlackHole 16ch (required for driver to load)
+3. Set up the routing:
+   - **System audio output** → BlackHole 16ch (call audio goes here)
+   - **Call/browser mic input** → BlackHole 2ch (AI speaks through here)
+   - **Vapi page mic** → BlackHole 16ch (Vapi hears the call)
+   - **Vapi audio output** → BlackHole 2ch (Vapi speaks into the call)
+
+**Note:** Chrome sends all tab audio to the same system output. You may need an Aggregate Device (Audio MIDI Setup) to split routing per-tab, or use the Vapi phone dial-in approach instead.
+
+### Alternative: Vapi Phone Dial-In (Recommended)
+The cleanest approach — no audio routing needed:
+1. Get a Vapi phone number (~$2/month) in the Vapi dashboard
+2. Use the outbound call API to dial into any meeting's phone number
+3. Vapi handles all audio I/O over the phone line
+
+```bash
+curl -X POST "https://api.vapi.ai/call" \
+  -H "Authorization: Bearer YOUR_VAPI_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"assistantId": "YOUR_ASSISTANT_ID", "phoneNumberId": "YOUR_PHONE_ID", "customer": {"number": "+1MEETINGDIALNUMBER"}}'
+```
+
+### Restream / StreamYard (One-Way Fallback)
 1. Install a virtual audio device:
    - **macOS:** `brew install --cask blackhole-2ch`
    - **Windows:** VB-Cable
@@ -71,7 +102,7 @@ Click "Talk to Assistant" in the Vapi dashboard. Your voice → Vapi → this se
 2. Set system audio output to the virtual device
 3. Join the stream as a guest via browser
 4. Set the browser's mic input to the virtual audio device
-5. Open Vapi "Talk to Assistant" in another tab — audio routes through the virtual device
+5. Use `say` command or Vapi to output audio through the virtual device
 
 ### OBS
 1. Add the virtual audio device as an Audio Input source
